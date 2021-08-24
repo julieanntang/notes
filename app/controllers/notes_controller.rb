@@ -20,6 +20,11 @@ class NotesController < ApplicationController
     end
   end
 
+  def show
+    note = Note.find(params[:id])
+    render component: "Note", props: { note: note }
+  end
+
   private
   def note_params
     params.require(:note).permit(:title, :description)
